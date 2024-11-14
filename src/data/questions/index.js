@@ -1,15 +1,15 @@
 import { regularQuestions, additionalQuestions } from './set-a';
-import { questions as setBQuestions } from './set-b/questions';
-import { questions as setCQuestions } from './set-c/questions';
-import { questions as setDQuestions } from './set-d/questions';
+import { questionSetB } from './set-b/questions';
+import { questionSetC } from './set-c/questions';
+import { questionSetD } from './set-d/questions';
 
 const questionsByModule = {
     foundation: {
         a: regularQuestions,
         aExtra: additionalQuestions,
-        b: setBQuestions,
-        c: setCQuestions,
-        d: setDQuestions
+        b: questionSetB,
+        c: questionSetC,
+        d: questionSetD
     }
 };
 
