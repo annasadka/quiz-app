@@ -1,16 +1,40 @@
-import React, { useState } from 'react';
+// src/components/QuizSummary.js
+import React, { useState, useEffect } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
 import { ChevronDown, ChevronUp, Check, X } from 'lucide-react';
 
-const QuizSummary = ({ questions, userAnswers, onReturn }) => {
+const QuizSummary = ({ questions, userAnswers, onReturn, mode = 'study' }) => { // dodano prop mode
     const [expandedQuestions, setExpandedQuestions] = useState(new Set());
 
-    // Obliczanie statystyk
     const correctAnswers = Object.entries(userAnswers).filter(
         ([_, answer]) => answer.isCorrect
     ).length;
     const totalQuestions = questions.length;
     const percentage = ((correctAnswers / totalQuestions) * 100).toFixed(1);
+
+    // Dodajemy useEffect do zapisywania sesji
+    useEffect(() => {
+        const session = {
+            date: new Date().toISOString(),
+            mode,
+            score: percentage,
+            correctAnswers,
+            totalQuestions,
+            incorrectAnswers: questions
+                .map((q, idx) => ({
+                    questionNumber: idx + 1,
+                    question: q.question,
+                    userAnswer: userAnswers[idx]?.selectedAnswer,
+                    correctAnswer: q.correctAnswer,
+                    isCorrect: userAnswers[idx]?.isCorrect
+                }))
+                .filter(q => !q.isCorrect)
+        };
+
+        const savedSessions = JSON.parse(localStorage.getItem('quizSessions') || '[]');
+        savedSessions.unshift(session);
+        localStorage.setItem('quizSessions', JSON.stringify(savedSessions));
+    }, []); // Uruchomi się tylko raz przy montowaniu komponentu
 
     const toggleQuestion = (questionId) => {
         setExpandedQuestions(prev => {
@@ -98,10 +122,10 @@ const QuizSummary = ({ questions, userAnswers, onReturn }) => {
                                                     <div
                                                         key={optionIndex}
                                                         className={`p-2 rounded ${optionIndex === question.correctAnswer
-                                                                ? 'bg-green-100'
-                                                                : userAnswer?.selectedAnswer === optionIndex
-                                                                    ? 'bg-red-100'
-                                                                    : 'bg-white'
+                                                            ? 'bg-green-100'
+                                                            : userAnswer?.selectedAnswer === optionIndex
+                                                                ? 'bg-red-100'
+                                                                : 'bg-white'
                                                             }`}
                                                     >
                                                         <span className="font-semibold mr-2">{option.label})</span>

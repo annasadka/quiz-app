@@ -119,7 +119,7 @@ const questions = [
         id: 5,
         chapter: "Podstawy testowania",
         subchapter: "Podejście do testów",
-        question: "Które z poniższych czynników (i–v) mają ISTOTNY wpływ na podejście do testów? i. Cykl życia wytwarzania oprogramowania (SDLC). ii. Liczba defektów wykrytych w poprzednich projektach. iii. Zidentyfikowane ryzyka produktowe. iv. Nowe wymagania wynikające z przepisów wymuszające formalne testowanie białoskrzynkowe. v. Konfiguracja środowiska testowego.",
+        question: "Które z poniższych czynników (i–v) mają ISTOTNY wpływ na podejście do testów? \n i. Cykl życia wytwarzania oprogramowania (SDLC). \n ii. Liczba defektów wykrytych w poprzednich projektach. \n iii. Zidentyfikowane ryzyka produktowe. \n iv. Nowe wymagania wynikające z przepisów wymuszające formalne testowanie białoskrzynkowe. \n v. Konfiguracja środowiska testowego.",
         options: [
             {
                 label: "A",
