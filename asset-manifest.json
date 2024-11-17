@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/NAZWA-REPOZYTORIUM/static/css/main.5da560d7.css",
+    "main.js": "/NAZWA-REPOZYTORIUM/static/js/main.72ed1333.js",
+    "index.html": "/NAZWA-REPOZYTORIUM/index.html",
+    "main.5da560d7.css.map": "/NAZWA-REPOZYTORIUM/static/css/main.5da560d7.css.map",
+    "main.72ed1333.js.map": "/NAZWA-REPOZYTORIUM/static/js/main.72ed1333.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5da560d7.css",
+    "static/js/main.72ed1333.js"
+  ]
+}
